@@ -1,0 +1,14 @@
+
+
+	Client												     Client
+	 IPV4 ----->4to6-------->Internetv6------->6to4---------->IPV6
+		  TCP		  TCP				 TCP		  TCP
+
+
+
+Client IPV4 : Machine + voir TP sockets
+4to6 :
+
+	->recuperer TOUT le paquet
+	->expedier ce paquet  
+
