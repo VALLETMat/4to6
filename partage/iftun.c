@@ -30,28 +30,28 @@ int tun_alloc(char *dev)
 }
 
 int cpforever(int src,int dst){
-    char [1024] buf;
+    char buf[1024];
     for(;;){
-    int r=read(fd, buf, length(buf));
-    if(r<0){
-        perror("read\n");
-        return(-1);
-    }
-    if(!r){
-        return 0;
-    }
-    int w=write(dst,buf,r);
-    if(w<0){
-        perror("write\n");
-        return(-1);
-    }
+        int r=read(src, buf, 1024);
+        if(r<0){
+            perror("read\n");
+            return(-1);
+        }
+        if(!r){
+            return 0;
+        }
+        int w=write(dst,buf,r);
+        if(w<0){
+            perror("write\n");
+            return -1;
+        }
     }
 
 }
 
 int main (int argc, char** argv){
 
-  int tunfd;
+  /*int tunfd;
   printf("Création de %s\n",argv[1]);
   tunfd = tun_alloc(argv[1]);
   printf("Faire la configuration de %s...\n",argv[1]);
@@ -62,5 +62,9 @@ int main (int argc, char** argv){
   printf("Appuyez sur une touche pour terminer\n");
   getchar();
 
+  return 0;
+  */
+
+  cpforever(atoi(argv[1]),1);
   return 0;
 }

@@ -1,4 +1,17 @@
-#include "iftun.h"
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+#include <sys/socket.h>
+#include <sys/stat.h>
+#include <sys/ioctl.h>
+
+#include <unistd.h>
+#include <fcntl.h>
+#include <linux/if.h>
+#include <linux/if_tun.h>
+
+
+
 
 int tun_alloc(char *dev)
 {
@@ -23,30 +36,11 @@ int tun_alloc(char *dev)
 
   if( (err = ioctl(fd, TUNSETIFF, (void *) &ifr)) < 0 ){
     close(fd);
+    printf("test\n");
     return err;
   }
   strcpy(dev, ifr.ifr_name);
   return fd;
-}
-
-int cpforever(int src,int dst){
-    char [1024] buf;
-    for(;;){
-    int r=read(fd, buf, length(buf));
-    if(r<0){
-        perror("read\n");
-        return(-1);
-    }
-    if(!r){
-        return 0;
-    }
-    int w=write(dst,buf,r);
-    if(w<0){
-        perror("write\n");
-        return(-1);
-    }
-    }
-
 }
 
 int main (int argc, char** argv){
@@ -54,7 +48,7 @@ int main (int argc, char** argv){
   int tunfd;
   printf("Création de %s\n",argv[1]);
   tunfd = tun_alloc(argv[1]);
-  printf("Faire la configuration de %s...\n",argv[1]);
+  printf("Faire la configuration de %s...%d\n",argv[1],tunfd);
   printf("Appuyez sur une touche pour continuer\n");
   getchar();
   printf("Interface %s Configurée:\n",argv[1]);
