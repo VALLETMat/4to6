@@ -20,15 +20,23 @@ eth1:
     - proto: none
     - ipaddr: 172.16.2.131
     - netmask: 28
-
-## Configuration de la route vers LAN2 via VM2
+eth2:
+  network.managed:
+    - enabled: True
+    - type: eth
+    - proto: none
+    - ipaddr: 172.16.2.151
+    - netmask: 28
 routes:
   network.routes:
-    - name: eth1
+    - name: eth2
     - routes:
-      - name: LAN2
+      - name: LAN1
         ipaddr: 172.16.2.160/28
         gateway: 172.16.2.132
-
+net.ipv4.ip_forward:
+  sysctl:
+    - present
+    - value: 1
 
 

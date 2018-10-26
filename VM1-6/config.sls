@@ -30,7 +30,7 @@ eth2:
     - enabled: True
     - type: eth
     - proto: none
-    - ipaddr: 172.16.2.144
+    - ipaddr: 172.16.2.156
     - netmask: 28
 
 ## Configuration de la route vers LAN2 via VM2
@@ -38,7 +38,7 @@ routes:
   network.routes:
     - name: eth1
     - routes:
-      - name: LAN2-6
+      - name: LAN1-6
         ipaddr: fc00:1234:2::/64
         gateway: fc00:1234:1::26
     - name: eth2
