@@ -29,15 +29,20 @@ eth2:
     - ipaddr: 172.16.2.162
     - netmask: 28
 
-## No need to add routes
-
-## But enable ipv4 forwarding
+routes:
+  network.routes:
+    - name: eth1
+    - routes:
+      - name: LAN4
+        ipaddr: 172.16.2.176/28
+        gateway: 172.16.2.163
+    - name: eth2
+    - routes:
+      - name: LAN3
+        ipaddr: 172.16.2.144/28
+        gateway: 172.16.2.131
 net.ipv4.ip_forward:
   sysctl:
     - present
     - value: 1
-
-
-
-
 

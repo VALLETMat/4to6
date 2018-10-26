@@ -31,6 +31,7 @@ int tun_alloc(char *dev)
 
 int cpforever(int src,int dst){
     char buf[1024];
+    printf("\n%d\n\n",src);
     for(;;){
         int r=read(src, buf, 1024);
         if(r<0){
