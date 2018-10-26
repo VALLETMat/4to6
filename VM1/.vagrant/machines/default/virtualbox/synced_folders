@@ -1,0 +1,1 @@
+{"virtualbox":{"/vagrant":{"owner":"m1reseaux","guestpath":"/vagrant","hostpath":"/home/master_bait/Bureau/M1/Reseau/IP_426_exo2/VM1","disabled":false,"__vagrantfile":true},"/mnt/partage":{"create":true,"owner":"m1reseaux","guestpath":"/mnt/partage","hostpath":"/home/master_bait/Bureau/M1/Reseau/IP_426_exo2/partage","disabled":false,"__vagrantfile":true}}}
